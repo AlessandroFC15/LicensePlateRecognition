@@ -1,0 +1,21 @@
+https://burubaxair.wordpress.com/2014/03/12/artificial-neural-networks-in-scilab/
+
+--------
+
+>> Desenvolvimento
+
+	To recognize these letters, we built a perceptron with three layers.
+
+	The input layer has 35 neurons – one neuron for each pixel in the picture.
+
+	The output layer has two neurons – one neuron per class in our classification task (one for “T”, another one for “U”).
+
+	+ Treino da RNA
+		-> Explicar entrada
+
+		-> Explicar saída
+
+	+ Simulações incluindo ruídos nas matrizes
+
+	+ Mostrar mudanças nos resultados quando o learning rate é alterado
+		. It is obvious from the results shown that as the learning rate is increased, the more closer the obtained values for the output are. Also, increasing the number of training cycles results to values for the output that are closer to the desired ones. 
