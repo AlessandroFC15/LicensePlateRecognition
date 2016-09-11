@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_init">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_init</refname>
+    <refpurpose>initialize the weight hypermatrix.</refpurpose>
+  </refnamediv>  
+  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>W = ann_FF_init(N[,r,rb])
+     </para>
+  </refsection>  
+  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> N    Row vector describing the number of neurons per layer. N(1) is the
+      size of input pattern vector, N(size(N,'c')) is the size of output
+      pattern vector (and also target).
+      
+ r    Two component row vector defining the smallest and the largest value
+      for initialization. Weights will be initialized with random numbers
+      between these two values.
+      
+     r(1) the lower limit
+          
+     r(2) the upper limit
+          
+         This parameter is optional, default value is [-1,1].
+          
+ rb   Same as r but for biases.  This parameter is optional, default value
+      is [0,0], i.e. the biases are initialized to zero.
+      
+ W    The weight hypermatrix, in the format used by ann_FF_Std, ann_BP_run
+      and all other algorithms for feedforward nets (with biases).
+
+     </para>
+  </refsection>  
+<refsection>
+    <title>Description</title>
+    <para>   This function builds the weight hypermatrix according to network
+  description N. Its format is detailed in ann_FF.
+     </para>
+  </refsection>  
+  
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>      
+  
+  

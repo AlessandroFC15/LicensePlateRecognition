@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:id="ann_FF_grad" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008)
+    $</pubdate>
+  </info>
+
+  <refnamediv>
+    <refname>ann_FF_grad</refname>
+
+    <refpurpose>error gradient trough finite differences.</refpurpose>
+  </refnamediv>
+
+  <refsection>
+    <title>CALLING SEQUENCE</title>
+
+    <para>grad_E = ann_FF_grad(x,t,N,W,dW[,af,ef])</para>
+  </refsection>
+
+  <refsection>
+    <title>PARAMETERS</title>
+
+    <para>grad_E The error gradient, same layout as W. x Input patterns, one
+    per column.</para>
+
+    <para> t Target patterns, one per column. Each column have a correspondent
+    column in x.</para>
+
+    <para> N Row vector describing the number of neurons per layer. N(1) is
+    the size of input pattern vector, N(size(N,'c')) is the size of output
+    pattern vector (and also target).</para>
+
+    <para> W The weight hypermatrix. </para>
+
+    <para>dW The quantity used to perturb each W parameter. </para>
+
+    <para>af The name of activation function to be used (string). This
+    parameter is optional, default value "ann_log_activ", i.e. the logistic
+    activation function. </para>
+
+    <para>ef The name of error function to be used (string). This parameter is
+    optional, default value "ann_sum_of_sqr", i.e. the sum-of-squares error
+    function.</para>
+  </refsection>
+
+  <refsection>
+    <title>Description</title>
+
+    <para>Calculates error gradient trough a (slow) finite differences
+    procedure. Each element W(n,i,l) is changed to W(n,i,l)-dW then the error
+    is calculated and the process is repeated for W(n,i,l)+dW. </para>
+
+    <para>From the values obtained the partial derivative of the
+    sum-of-squares error function, with respect to W(n,i,l), is calculated and
+    the value of gradient returned. </para>
+
+    <para>This process is very slow (compared to the backpropagation
+    algorithms) so it is to be used only for testing purposes.</para>
+  </refsection>
+
+  <refsection>
+    <title>See Also</title>
+
+    <simplelist type="inline">
+      <member><link linkend="ANN">ANN</link></member>
+
+      <member><link linkend="ann_FF">ann_FF</link></member>
+    </simplelist>
+  </refsection>
+</refentry>

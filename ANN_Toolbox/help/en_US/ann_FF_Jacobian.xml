@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_Jacobian">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_Jacobian</refname>
+    <refpurpose>computes Jacobian by finite differences.</refpurpose>
+  </refnamediv>  
+  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>J = ann_FF_Jacobian(x,N,W,dx[,af])
+     </para>
+  </refsection>  
+  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> J    The Jacobian hypermatrix: each J(:,:,p) have same structure as
+      z(:,p)*x(:,p)', where z(:,p) is the network output given input
+      x(:,p).
+      
+ x    Matrix of input patterns, one pattern per column.
+      
+ N    Row vector describing the number of neurons per layer. N(1) is the
+      size of input pattern vector, N(size(N,'c')) is the size of output
+      pattern vector (and also target).
+      
+ W    The weight hypermatrix.
+      
+ dx   The quantity used to perturb each x(i,p) in turn.
+      
+ af   The activation function to be used.  This parameter is optional,
+      default value "ann_log_activ", i.e. the logistic activation function.
+
+     </para>
+  </refsection>  
+<refsection>
+    <title>Description</title>
+    <para>   This function calculates the Jacobian trough a finite differences
+  procedure, for all patterns presented in x.
+     </para>
+  </refsection>  
+  
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ANN_GEN">ANN_GEN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>      
+  
+  

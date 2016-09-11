@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_pat_shuffle">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_pat_shuffle</refname>
+    <refpurpose>shuffles randomly patterns for an ANN</refpurpose>
+  </refnamediv>  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>[x,t] = ann_pat_shuffle(x,t)
+     </para>
+  </refsection>  
+  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> x    Matrix containing the training inputs, one per column, each column
+      have a correspondent in t.
+      
+ t    Matrix containing the targets, one per column, each column have a
+      correspondent in x.
+
+     </para>
+  </refsection>  
+      
+<refsection>
+    <title>Description</title>
+    <para>   This function randomly shuffles the columns in matrices x and t, i.e.
+  randomly shuffles the patterns. Some ANN train better if the training set
+  is presented repeatedly but in random order. This function is intended to
+  be called between two epochs. The correspondence between the columns in x
+  and t is preserved.  Note that x and t may change place, i.e. you may
+  call this function as "[t,x]=ann_pat_shuffle(t,x)" as long as you keep
+  your order.
+  
+     </para>
+  </refsection>  
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>     
+  

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_VHess">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_VHess</refname>
+    <refpurpose>multiplication between a "vector" V and Hessian</refpurpose>
+  </refnamediv>  
+  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>VH = ann_BP_VHess(x, t, N, W, V, dW, [af, err_deriv_y])
+     </para>
+  </refsection>  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> VH   The result of multiplication - hypermatrix with the same layout as
+      W.
+      
+ x    Matrix of input patterns, one pattern per column.
+      
+ t    Matrix of target patterns, one pattern per column.
+      
+ N    Row vector describing the number of neurons per layer. N(1) is the
+      size of input pattern vector, N(size(N,'c')) is the size of output
+      pattern vector (and also target).
+      
+ W    The weight hypermatrix.
+      
+ V    The "vector" by which Hessian have to be multiplied, actually is a
+      hypermatrix with same layout as W (is from same space).
+      
+ dW   Size of "finite difference".
+      
+ af   The activation function to be used.  This parameter is optional,
+      default value "ann_log_activ", i.e. the logistic activation function.
+      
+ err_deriv_y
+       the name of error function derivative with respect to network outputs. 
+      This parameter is optional, default value is "ann_d_sum_of_sqr", i.e.
+      the derivative of sum-of-squares.
+
+     </para>
+  </refsection>  
+      
+<refsection>
+    <title>Description</title>
+    <para>   This function calculates the product between a vector and Hessian trough
+  a (fast) finite difference procedure. The error gradient is calculated
+  (trough backpropagation) at W+dW*V and at W-dW*V and then VH is
+  calculated directly from here (this require only two backpropagations,
+  explicit computation of Hessian is avoided).
+     </para>
+  </refsection>  
+<refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>     

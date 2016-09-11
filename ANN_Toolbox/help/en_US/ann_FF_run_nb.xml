@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_run_nb">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_run_nb</refname>
+    <refpurpose>run patterns trough a feedforward net (without bias).</refpurpose>
+  </refnamediv>  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>y = ann_FF_run_nb(x,N,W[,l,af])
+     </para>
+  </refsection>  
+  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> y    Matrix of outputs, one pattern per column. Each column have a
+      correspondent column in x.
+      
+ x    Matrix of input patterns, one pattern per column
+      
+ N    Row vector describing the number of neurons per layer. N(1) is the
+      size of input pattern vector, N(size(N,'c')) is the size of output
+      pattern vector.
+      
+ W    The weight hypermatrix (initialized first trough ann_BP_init_nb).
+      
+ l    Defines the "injection" layer and the output layer. x patterns are
+      injected into layer l(1) as coming from layer l(1) - 1. y outputs are
+      collected from the outputs of layer l(2).  This parameter is
+      optional, default value is [2,size(N,'c')], i.e. the whole network. 
+      Warning: l(1)=1 does not make sense.
+      
+ af   String containing the name of activation function.
+      
+     This parameter is optional, default value "ann_log_activ", i.e.
+      logistic activation function.
+ 
+
+     </para>
+  </refsection>  
+ 
+<refsection>
+    <title>Description</title>
+    <para>   This function is used to run patterns trough a feedforward network as
+  defined by N and W.  This function is to be used on networks without
+  biases.
+     </para>
+  </refsection>  
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>      

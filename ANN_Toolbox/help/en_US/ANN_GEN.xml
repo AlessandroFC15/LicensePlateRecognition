@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ANN_GEN">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ANN_GEN</refname>
+    <refpurpose>General utility functions</refpurpose>
+  </refnamediv>  
+
+  
+<refsection>
+    <title>OBJECTIVE</title>
+    <para>To provide for some functions wich are usefull for a larger number of
+  architectures. This is their general man page.
+     </para>
+  </refsection>  
+
+  <refsection>
+    <title>USER INTERFACE: PARAMETERS AND FUNCTIONS</title>
+    <para>   In alphabetical order, not all functions require all parameters:
+  
+ x    Matrix containing input patterns, one per column. There shall be a
+      unique column corespondence with the matrix of targets t and/or y.
+      
+ y,z  Matrix containing actual output patterns, one per column. There
+      shall be a unique column corespondence with the matrix of targets t
+      and/or x.
+      
+ t    Matrix containing target patterns, one per column. There shall be a
+      unique column corespondence with the matrix of targets x and/or y.
+      
+ y = ann_log_activ(x)
+       Logistic activation function. Here y and x have to be column vectors.
+      
+ z = ann_d_log_activ(y)
+       Derivative of logistic activation function, expressed in terms of actual
+      output (not in terms of total input !).
+      
+ E = ann_sum_of_sqr(y,t)
+       Sum-of-squares error function.
+      
+ err_d = ann_d_sum_of_sqr(y,t)
+       Derivative, with respect to network outputs of sum-of-squares error
+      function. Here y and t have to be column vectors.
+      
+ [x,t] = ann_pat_shuffle(x,t)
+       Shuffles patterns randomly for better network training, the corespondence
+      between x and t is preserved
+     </para>
+  </refsection>  
+
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>     

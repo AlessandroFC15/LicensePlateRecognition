@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_Hess">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_Hess</refname>
+    <refpurpose>computes Hessian by finite differences.</refpurpose>
+  </refnamediv>  
+  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>H = ann_FF_Hess(x, t, N, W, dW, dW2 [,af ,ef])
+     </para>
+  </refsection>  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> H    The Hessian hypermatrix, have the same layout as W.*.W (not W.*.W',
+      as usually found in literature); H(n1,i1,l1,n2.i2,l2) is the second
+      derivative of error with respect to weights W(n1,i1,l1) and
+      W(n2,i2,l2).
+      
+ x    Matrix of input patterns, one pattern per column.
+      
+ t    Matrix of target patterns, one pattern per column.
+      
+ N    Row vector describing the number of neurons per layer. N(1) is the
+      size of input pattern vector, N(size(N,'c')) is the size of output
+      pattern vector (and also target).
+      
+ W    The weight hypermatrix.
+      
+ dW, dW2
+       The quantities used to perturb each W parameter; dW is used for
+      non-diagonal parameters, for diagonal parameters the supplemental
+      perturbations quantities dW2 * dW are also used (note that very small
+      values may easily lead to numerical instabilities)
+      
+ af   The activation function to be used.  This parameter is optional,
+      default value "ann_log_activ", i.e. the logistic activation function.
+      
+ ef   The error function to be used.
+      
+     This parameter is optional, default value "ann_sum_of_sqr", i.e. the
+      sum-of-squares error function.
+
+     </para>
+  </refsection>  
+<refsection>
+    <title>Description</title>
+    <para>   This function calculates the Hessian trough a finite differences
+  procedure.  This process is very slow and is provided for testing
+  purposes only.  Internals: or off-diagonal elements: two weights are
+  perturbed at +/- dW; for on-diagonal elements the perturbing quantities
+  are: +/- (1 +/- dW2) * dW for one weight; the corresponding Hessian term
+  is calculated from the four resulting errors (at four W points).
+     </para>
+  </refsection>  
+
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ANN_GEN">ANN_GEN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>      
+  

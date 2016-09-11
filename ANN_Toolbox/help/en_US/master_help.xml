@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!--Begin Entities-->
+<!ENTITY a1b502a64365953b897b73ba466f3901e SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ANN.xml">
+<!ENTITY a1018c163828dd4f699316659fa8d325c SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ANN_FF.xml">
+<!ENTITY a25af42661cf9a9272a9bc1e1bff41d03 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ANN_GEN.xml">
+<!ENTITY ad9a146285254a31fdf79354ae6813a15 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_ConjugGrad.xml">
+<!ENTITY ab89cfe1d18eb5198fef6f6eab617d1a7 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Hess.xml">
+<!ENTITY a01d459ff073ce177e646c800555f973f SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_INT.xml">
+<!ENTITY a169017dfd4c94909b5037bb025a038d3 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Jacobian.xml">
+<!ENTITY a53e0145f93e7c2429c8cf6431379afec SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Jacobian_BP.xml">
+<!ENTITY abf801f6afc343b1542a9e992e5617b08 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Mom_batch.xml">
+<!ENTITY a93afeb2500ae2039ece55c5ea3f7ee6e SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Mom_batch_nb.xml">
+<!ENTITY ab106d54e9e1836dc5302e10416f3607f SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Mom_online.xml">
+<!ENTITY a0fd4aae3189bf0073ff2c83a8edbb2d6 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Mom_online_nb.xml">
+<!ENTITY a3f8bf7754289431c1d06d5d5e6961207 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_SSAB_batch.xml">
+<!ENTITY a51e20e5e94dc69ed8d3852fe73685a7e SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_SSAB_batch_nb.xml">
+<!ENTITY a710fd331454e063669c81af20be4fb15 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_SSAB_online.xml">
+<!ENTITY a1822c4efcd3a8c82f5a05134cfe5dea5 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_SSAB_online_nb.xml">
+<!ENTITY a6a422f4dd29e01a656ee02e8cf4d2233 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Std_batch.xml">
+<!ENTITY abf68cdd4cff0c5008a59270fef03a06d SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Std_batch_nb.xml">
+<!ENTITY a217de3752b069bf496aa4fc901478b5c SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Std_online.xml">
+<!ENTITY a25a4c288891981018a0caf9646ce6e46 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_Std_online_nb.xml">
+<!ENTITY ab31efd2f92ccc7d0ea9e21f1c20bd2ea SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_VHess.xml">
+<!ENTITY a0dca62b8bcde5b4c43a1da53c7211871 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_grad.xml">
+<!ENTITY a84c5ceffc3af40cf9e6a7c6479fe2179 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_grad_BP.xml">
+<!ENTITY a6cd3b58ff58a38caf3a9385a85c06c27 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_grad_BP_nb.xml">
+<!ENTITY a5a95aca796cacf345387e1a3fad42713 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_grad_nb.xml">
+<!ENTITY a36e3e9098e4fa7c3ea2c9d738cd4bfd2 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_init.xml">
+<!ENTITY acf5aa681d502553413abf159d0a77e77 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_init_nb.xml">
+<!ENTITY a445e18de659908085f1fbd47763caa13 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_run.xml">
+<!ENTITY afface43591f40fb96f349f5ddc0653ce SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_FF_run_nb.xml">
+<!ENTITY a15da0b99b5e5aeb355d21c06aca3a5b5 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_d_log_activ.xml">
+<!ENTITY a07f09a02dfd87e6efbcb7ad7a26a2809 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_d_sum_of_sqr.xml">
+<!ENTITY accc3080ace55600037bbe244a6f17837 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_log_activ.xml">
+<!ENTITY a269ece56c2e3b159a97df7fcc0092637 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_pat_shuffle.xml">
+<!ENTITY a2dddbf773f46a405378a8ba2c5a0ba00 SYSTEM "/home/mystic_alex/Dropbox/Personal Growth/Areas/Education/5º Semestre/Inteligência Artificial/2_AVAL/ANN_Toolbox/help/en_US/ann_sum_of_sqr.xml">
+<!--End Entities-->
+]>
+<book version="5.0-subset Scilab" xml:lang="en_US"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:mml="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info xml:id='ann_toolbox_manual'>
+    <title>ANN toolbox</title>
+  </info>
+
+<part xml:id='section_5cae1a198a9e6cd5c0ad0eb3355b0b9a'>
+<title>ANN toolbox</title>
+&a1b502a64365953b897b73ba466f3901e;
+&a1018c163828dd4f699316659fa8d325c;
+&a25af42661cf9a9272a9bc1e1bff41d03;
+&ad9a146285254a31fdf79354ae6813a15;
+&ab89cfe1d18eb5198fef6f6eab617d1a7;
+&a01d459ff073ce177e646c800555f973f;
+&a169017dfd4c94909b5037bb025a038d3;
+&a53e0145f93e7c2429c8cf6431379afec;
+&abf801f6afc343b1542a9e992e5617b08;
+&a93afeb2500ae2039ece55c5ea3f7ee6e;
+&ab106d54e9e1836dc5302e10416f3607f;
+&a0fd4aae3189bf0073ff2c83a8edbb2d6;
+&a3f8bf7754289431c1d06d5d5e6961207;
+&a51e20e5e94dc69ed8d3852fe73685a7e;
+&a710fd331454e063669c81af20be4fb15;
+&a1822c4efcd3a8c82f5a05134cfe5dea5;
+&a6a422f4dd29e01a656ee02e8cf4d2233;
+&abf68cdd4cff0c5008a59270fef03a06d;
+&a217de3752b069bf496aa4fc901478b5c;
+&a25a4c288891981018a0caf9646ce6e46;
+&ab31efd2f92ccc7d0ea9e21f1c20bd2ea;
+&a0dca62b8bcde5b4c43a1da53c7211871;
+&a84c5ceffc3af40cf9e6a7c6479fe2179;
+&a6cd3b58ff58a38caf3a9385a85c06c27;
+&a5a95aca796cacf345387e1a3fad42713;
+&a36e3e9098e4fa7c3ea2c9d738cd4bfd2;
+&acf5aa681d502553413abf159d0a77e77;
+&a445e18de659908085f1fbd47763caa13;
+&afface43591f40fb96f349f5ddc0653ce;
+&a15da0b99b5e5aeb355d21c06aca3a5b5;
+&a07f09a02dfd87e6efbcb7ad7a26a2809;
+&accc3080ace55600037bbe244a6f17837;
+&a269ece56c2e3b159a97df7fcc0092637;
+&a2dddbf773f46a405378a8ba2c5a0ba00;
+</part>
+</book>

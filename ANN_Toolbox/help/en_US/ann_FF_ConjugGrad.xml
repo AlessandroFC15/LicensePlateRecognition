@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:id="ann_FF_ConjugGrad" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008)
+    $</pubdate>
+  </info>
+
+  <refnamediv>
+    <refname>ann_FF_ConjugGrad</refname>
+
+    <refpurpose>Conjugate Gradient algorithm.</refpurpose>
+  </refnamediv>
+
+  <refsection>
+    <title>CALLING SEQUENCE</title>
+
+    <para>W = ann_BP_ConjugGrad(x,t,N,W,T,dW[,ex,af,err_deriv_y])</para>
+  </refsection>
+
+  <refsection>
+    <title>PARAMETERS</title>
+
+    <para>W The weight hypermatrix; it have to be initialized with ann_BP_init
+    function. </para>
+
+    <para>x Matrix of input patterns, one pattern per column.</para>
+
+    <para> t Matrix of target patterns, one pattern per column.</para>
+
+    <para> N Row vector describing the number of neurons per layer.</para>
+
+    <para> N(1) is the size of input pattern vector, N(size(N,'c')) is the
+    size of output pattern vector (and also target).</para>
+
+    <para> T Number of training cycles (epochs, discrete time, steps). </para>
+
+    <para>dW The quantity used to calculate the product between a direction
+    and the Hessian trough a finite differences algorithm; this parameter is
+    passed to ann_BP_VHess function (see its man page for details). ex string
+    representing a valid Scilab sequence. It is executed after the weight
+    hypermatrix have been updated (i.e. after each epoch), using "execstr".
+    This parameter is optional, default value: " " (empty string, i.e. does
+    nothing). af The name of activation function to be used (string). This
+    parameter is optional, default value "ann_log_activ", i.e. the logistic
+    activation function. err_deriv_y The name of error function derivative
+    with respect to network outputs (string). This parameter is optional,
+    default value is "ann_d_sum_of_sqr", i.e. the derivative of
+    sum-of-squares.</para>
+  </refsection>
+
+  <refsection>
+    <title>Description</title>
+
+    <para>This function performs training of a feedforward net using the
+    conjugate gradients algorithm. </para>
+
+    <para>The computation of Hessian is avoided by calculating directly the
+    product between a direction and Hessian trough a finite difference
+    approach which require just two error gradients (see function
+    ann_BP_VHess). </para>
+
+    <para>The error gradient is calculated across all training patterns at
+    once given in x (respectively t).</para>
+  </refsection>
+
+  <refsection>
+    <title>See Also</title>
+
+    <simplelist type="inline">
+      <member><link linkend="ANN">ANN</link></member>
+
+      <member><link linkend="ANN_GEN">ANN_GEN</link></member>
+
+      <member><link linkend="ann_FF">ann_FF</link></member>
+
+      <member><link linkend="ann_FF_init">ann_FF_init</link></member>
+
+      <member><link linkend="ann_FF_run">ann_FF_run</link></member>
+
+      <member><link linkend="ann_FF_grad_BP">ann_FF_grad_BP</link></member>
+
+      <member><link linkend="ann_FF_VHess">ann_FF_VHess</link></member>
+    </simplelist>
+  </refsection>
+</refentry>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_INT">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_INT</refname>
+    <refpurpose>internal implementation of feedforward nets.</refpurpose>
+  </refnamediv>  
+  
+
+  
+ <refsection>
+    <title>Description</title>
+    <para>   This man page describes the internals of implementation, it is of
+  interest only to those wanting to modify/adapt the functions provided (in
+  case they do not fit the need :-)
+     </para>
+  </refsection>  
+  
+<refsection>
+    <title>INTERNAL VARIABLES (IN ALPHABETICAL ORDER)</title>
+    <para> The variables described here are used internally only in the functions
+  body. They are:
+  
+ err_dz
+       the partial derivative of error with respect to neuronal outputs, on
+      current layer.
+      
+ err_dz_deriv_af
+       the element-wise product between err_dz and deriv_af.
+      
+ deriv_af
+       the derivative of activation function for current layer.
+      
+ grad_E
+       gradient of error, same hypermatrix structure as W. E.g. grad_E(n,i,l)
+      destined to hold the partial derivative of error with respect to
+      W(n,i,l).
+      
+ grad_E_mod
+       similar to grad_E but it is not the real grad_E because is modified in
+      some significant way.
+      
+ l, ll
+       current layer number (different from l(1), l(2)) (if l=[l(1),l(2)] is
+      used as parameter then ll is used as layer counter)
+      
+ L    total number of layers, including input.
+      
+ p    current pattern number.
+      
+ P    total number of patterns.
+      
+ y    holds the network output(s), one per column.
+      
+ z    matrix of neuronal outputs, one column for each layer, e.g.
+      
+     z(1:N(1),1)
+               contains the inputs
+          
+     z(1:N(2),2)
+               contains the outputs of first hidden layer
+          
+     z(1:N(L),L)
+               contains the output
+          
+BIAS
+   Bias is simulated trough an additional neuron with constant output "1".
+  The "bias neuron" is present on all layers, except output, as the first
+  neuron.
+     </para>
+  </refsection>  
+
+  
+  
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>      
+  
+  
+  

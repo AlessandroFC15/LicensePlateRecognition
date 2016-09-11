@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:id="ann_d_log_activ" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008)
+    $</pubdate>
+  </info>
+
+  <refnamediv>
+    <refname>ann_d_log_activ</refname>
+
+    <refpurpose>derivative of logistic activation function</refpurpose>
+  </refnamediv>
+
+  <refsection>
+    <title>Description</title>
+
+    <para>This function is the derivative of default neuronal activation
+    function. </para>
+
+    <para>Any other, user defined, function should have the same input and
+    output format for variables.</para>
+
+    <para>Particularly note that the derivative is expressed in terms of
+    activation, not total neuronal input.</para>
+  </refsection>
+
+  <refsection>
+    <title>CALLING SEQUENCE</title>
+
+    <para>z = ann_d_log_activ(y)</para>
+  </refsection>
+
+  <refsection>
+    <title>PARAMETERS</title>
+
+    <para>z Matrix containing the derivative of activation, one pattern per
+    column. </para>
+
+    <para>For each pattern (column): z(i) = y(i) * [1 - y(i)] y Matrix
+    containing the current neuronal activation, one pattern per column.</para>
+
+    <para>For each pattern: each y(i) for the corresponding i-th neuron (on
+    the current layer).</para>
+  </refsection>
+
+  <refsection>
+    <title>COMPONENTS</title>
+
+    <para>General support functions See ANN_GEN for support functions for ANN.
+    Feedforward networks See ann_FF for detailed description.</para>
+  </refsection>
+
+  <refsection>
+    <title>See Also</title>
+
+    <simplelist type="inline">
+      <member><link linkend="ANN">ANN</link></member>
+
+      <member><link linkend="ann_FF">ann_FF</link></member>
+    </simplelist>
+  </refsection>
+</refentry>

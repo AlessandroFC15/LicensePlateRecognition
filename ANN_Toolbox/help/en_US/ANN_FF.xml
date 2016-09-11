@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:id="ann_FF" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008)
+    $</pubdate>
+  </info>
+
+  <refnamediv>
+    <refname>ann_FF</refname>
+
+    <refpurpose>Algorithms for feedforward nets.</refpurpose>
+  </refnamediv>
+
+  <refsection>
+    <title>OBJECTIVE</title>
+
+    <para>To provide engines for feedforward ANN exploration, testing and
+    rapid prototyping.</para>
+
+    <para>Some flexibility is provided (e.g. the possibility to change the
+    activation or error functions).</para>
+  </refsection>
+
+  <refsection>
+    <title>ARCHITECTURE DESCRIPTION</title>
+
+    <para>(a) The network is visualized as follows: inputs at the left and
+    data (signals) propagating to the right.</para>
+
+    <para>(b) N is a row vector containing the number of neurons per layer,
+    input included.</para>
+
+    <para>(c) First layer is input (despite the fact that it does not process
+    data it makes implementation clearer).</para>
+
+    <para>Layer no. 1 2 ... size(N,'c') . -- o o -&gt; \/ /\ i . -- o o -&gt;
+    o n \ |\ u p \ =====| &gt; t u |/ p t u s / t / s . - o o -&gt; input
+    first output hidden</para>
+
+    <para>Note that connections do not jump over layers, they are only between
+    adjacent layers (fully interconnected).</para>
+
+    <para>(d) The dimension of N is size(N,'c') so: - input layer have N(1)
+    neurons - first hidden layer have N(2) neurons, ...</para>
+
+    <para>- the output layer L have N(size(N,'c')) neurons</para>
+
+    <para>(e) The input vector/matrix is x, each pattern is represented by one
+    column.</para>
+
+    <para>Only constant size input patterns are accepted.</para>
+
+    <para>NOTE: Internally the patterns will be worked with, individually, as
+    column vectors, i.e. each pattern vector is a column of the form: x(:,p),
+    (p being the pattern order number).</para>
+
+    <para>(f) Each neuron on first hidden layer have N(1) inputs, ... for
+    layer l in [2, ..., size(N,'c')] each neuron have N(l-1) inputs from
+    previous layer plus one simulating the bias (where applicable, most
+    algorithms assume existence of bias).</para>
+
+    <para>(g) The network is fully connected but a connection can be canceled
+    by zeroing the corresponding weight</para>
+
+    <para>(note that a training procedure may turn it back to a non-zero
+    value, this is one reason for which some "hooks" are provided, see "ex"
+    parameter below).</para>
+  </refsection>
+
+  <refsection>
+    <title>USER INTERFACE (1): PARAMETERS</title>
+
+    <para>This subsection describes the parameters taken by the various
+    functions defined within the toolbox, not all functions require all
+    parameters.</para>
+
+    <para>In alphabetical order: af gives activation function and, if
+    required, its (total) derivative. It is either: - a string giving the name
+    of activation function - a two element row vector of strings where af(1)
+    is the string with the name of activation function and af(2) is the name
+    of the derivative.</para>
+
+    <para>NOTE: Given an activation function y = f(x), the derivative have to
+    be expressed in terms of y not x).</para>
+
+    <para>E.g. given the logistic activation function: 1 y = ----------- 1 +
+    exp(-x) the derivative will be expressed as: dy -- = y (1 - y) dx This
+    form reduces the memory usage and, in the particular case of the logistic
+    activation function, increases speed as well.</para>
+
+    <para>This parameter is optional, default value is either "ann_log_activ"
+    or ["ann_log_activ","ann_d_log_activ"] (depending on the function using
+    it), i.e. the activation function, described above, and its derivative
+    (the default functions are already defined in this toolbox).</para>
+
+    <para>WARNING: Be very careful how to define a new activation
+    function.</para>
+
+    <para>These functions accept patterns as column vectors within y, each
+    element representing the total input on a neuron, and return a similar
+    matrix representing the activation of the whole layer. I.e. the logistic
+    is defined as: y = 1 ./ (1 + %e^(-x)) and note the space between 1 and ./
+    The derivative of activation function is defined similarly: z = y .* (1 -
+    y) and note the ".*" operator.</para>
+
+    <para>Delta_W_old The quantity by which W was changed on previous training
+    pattern.</para>
+
+    <para>dW, dW2 the amount of variations of each W element for calculating
+    the error derivatives trough a finite difference approach (see ann_FF_grad
+    and ann_FF_Hess for more information). ef error function.</para>
+
+    <para>This parameter is optional, default value is "ann_sum_of_sqr", i.e.
+    the sum-of-squares (already defined within this toolbox). err_deriv_y the
+    error derivative with respect to network outputs. Returns a matrix each
+    column containing the error derivative corresponding to the appropriate
+    pattern.</para>
+
+    <para>This parameter is optional, default value is "ann_d_sum_of_sqr"
+    (already defined within this toolbox), i.e. the derivative of
+    sum-of-squares error function. ex is a Scilab program sequence, executed
+    after the weight hypermatrix for each training pattern have been
+    updated.</para>
+
+    <para>Its main purpose is to provide hooks in order to change the learning
+    function without having to rewrite it. Typical usages would be: checking
+    for a stop criteria, pruning.</para>
+
+    <para>This parameter is optional, default value is [" "] or [" "," "]
+    (some functions have two hooks), i.e. empty string, does nothing. l range
+    of layers between which the network is run.</para>
+
+    <para>Two component row vector: l(1) layer into which a pattern will be
+    injected, presented as it would have come from previous layer: l(1)-1.
+    l(2) layer from which the outputs are collected. E.g.: l = [3,3] means
+    input is injected into neurons from layer 3 and their outputs (l(2)=3) are
+    collected to give the result. l = [2,3] means input is injected into first
+    hidden layer (exactly as it would have come from input layer) and output
+    is collected at the outputs of neurons on layer 3. This parameter is
+    optional, default value is [2,size(N,'c')] (whole network).</para>
+
+    <para>WARNING: l(1) = 1 does not make sense as it represents the input
+    layer.</para>
+
+    <para>lp represents the learning parameters, is a row vector [lp(1),
+    lp(2), ...]</para>
+
+    <para>The actual significance of each component may vary, see the
+    respective man pages for representation and typical values.</para>
+
+    <para>N row vector, defines the network, i.e. no. of neurons per layer.
+    N(l) represents the number of neurons on layer l. E.g.: N(1) is the size
+    of input vector, N(size(N),'c') is the size of output vector r range of
+    random numbers based on which the connection weights (not biases) are
+    initialized.</para>
+
+    <para>Is a two component row vector: r(1) gives the lower limit r(2) gives
+    the upper limit</para>
+
+    <para>This parameter is optional, default value is [-1,1].</para>
+
+    <para>rb range of random numbers based on which the biases (not other
+    weihts) are initialized.</para>
+
+    <para>Is a two component row vector: rb(1) gives the lower limit rb(2)
+    gives the upper limit</para>
+
+    <para>This parameter is optional, default value is [0,0], i.e. biases are
+    initialized with 0.</para>
+
+    <para>t matrix of targets, one pattern per column. E.g. t(:,p) represents
+    pattern no. p. x matrix of inputs, one pattern per column. E.g. x(:,p)
+    represents pattern no. p</para>
+  </refsection>
+
+  <refsection>
+    <title>USER INTERFACE (2): FUNCTIONS</title>
+
+    <para>The function names are built as follows: ann prefix for all function
+    names within this toolbox. _FF prefix for all function names designed for
+    feedforward nets. defines the type of algorithm: online uses one pattern
+    at a time, batch uses all patterns at once. _nb postfix for all function
+    names within this toolbox designed for networks without bias. ann_FF_init
+    Build and initialize the weight hypermatrix. ann_FF_Std Standard (vanilla,
+    delta rule) backpropagation algorithm. ann_FF_Mom Backpropagation with
+    momentum. ann_FF_run Runs the network. ann_FF_grad Calculate the error
+    gradient trough a finite difference approach. It is provided for testing
+    purposes only. ann_FF_Jacobian Calculate the Jacobian trough a finite
+    difference approach. It is provided for testing purposes only.
+    ann_FF_Jacobian_BP Calculate the Jacobian trough a backpropagation
+    algorithm. ann_FF_Hess Calculate the Hessian trough a finite difference
+    approach. It is provided for testing purposes only. ann_FF_VHess Calculate
+    the multiplication between a vector and the Hessian trough an efficient
+    finite difference approach. ann_FF_ConjugGrad Conjugate gradients
+    algorithm. ann_FF_SSAB Backpropagation with SuperSAB algorithm.</para>
+  </refsection>
+
+  <refsection>
+    <title>TIPS AND TRICKS</title>
+
+    <para>- Do not use the no-bias networks unless you know what you are
+    doing.</para>
+
+    <para>- The most efficient (by far) algorithm is the "Conjugate Gradient",
+    however it may require bootstrapping with another algorithm (see the
+    examples).</para>
+
+    <para>- Reduce as much is possible the number of loops and the number of
+    function calls, use instead as much is possible the matrix manipulation
+    capabilities of Scilab.</para>
+
+    <para>- You can do a shuffling of training patterns between two calls to
+    the training procedure, use the "ex" hooks provided.</para>
+
+    <para>- Be very careful when defining new activation and error functions
+    and test them to make sure they do what are supposed to do.</para>
+
+    <para>- don't use sparse matrices unless they are really sparse (&lt;
+    5%).</para>
+  </refsection>
+
+  <refsection>
+    <title>IMPLEMENTATION DETAILS</title>
+
+    <para>- Each layer have associated a hypermatrix of weights.</para>
+
+    <para>NOTE: Most algorithms assume existence of bias by default. For each
+    layer l, except l=1, the weight matrix associated with connections from
+    l-1 to l is W(1:N(l),1:N(l-1),l-1) for networks without biases and
+    W(1:N(l),1:N(l-1)+1,l-1) for networks with biases, i.e. biases are stored
+    in first column: W(1:N(l),1,l-1).</para>
+
+    <para>The total input to a layer l is: =
+    W(1:N(l),1:N(l-1),l-1)*z(1:N(l-1)) for network without biases =
+    W(1:N(l),1:N(l-1)+1,l-1)*[1; z(1:N(l-1))] for network with biases where
+    z(1:N(l-1)) is output of previous layer (column vector), i.e. bias is
+    simulated as neuron no. 0 on each layer with constant output 1.</para>
+
+    <para>W is initialized to: hypermat(max(N),max(N),size(N,'c')-1) for
+    networks without biases, "hypermat(max(N),max(N)+1,size(N,'c')-1)" for
+    networks with biases; the unused entries from W are initialized to zero
+    and left untouched.</para>
+
+    <para>- Pattern vectors are passed as columns in a matrix representing a
+    set (of patterns).</para>
+  </refsection>
+
+  <refsection>
+    <title>OBJECTIVE</title>
+
+    <para>- No sanity checks are performed as this will greatly hurt speed. It
+    is assumed that (as least to some extent) you know what you are doing ;-)
+    You can implement them yourself if you wish.</para>
+
+    <para>The following conditions have to be met: + targets have to have the
+    same size as output layer, i.e. size(target,'r') = N(size(N,'c')) + inputs
+    have to have the same size as input layer, i.e. size(input,'r') = N(1) +
+    all N(i) have to be positive integers of course (am I paranoid here ? :-)
+    + lp parameter is a row-vector of numbers (actual dimension depends on the
+    algorithm used). + af is a row-vector of string(s) defining a valid
+    activation function (and its derivative) as appropriate for the algorithm
+    used. + ex is a string or a two row-vector of strings, representing valid
+    Scilab set of instructions. + l(1) &lt;= l(2) (see definition of l above)
+    and l(1) &gt;= 2 + r(1) &lt;= r(2) and rb(1) &lt;= rb(2) (see definition
+    of r and rb above), if not then the program may run but you may not get
+    what you would expect when initializing the weights. Warning: In some
+    particular cases this may lead to very subtle errors (e.g. your program
+    may even run without generating any Scilab errors but the results may be
+    meaningless).</para>
+
+    <para>- The algorithms themselfs are not described here, there are many
+    books which describes them (e.g. get mine "Matrix ANN" wherever you may
+    find it ;-). - Hypermatrices are slow, however there is no other
+    reasonable way of doing things; tests performed by myself show that using
+    embedded matrices may increase speed but the manipulation of submatrices
+    "by hand" is very tedious and error prone. Of course you may rewrite the
+    algorithms for yourself using embedded matrices if you want to. If you
+    really need speed then go directly to C++ or whatever.</para>
+  </refsection>
+
+  <refsection>
+    <title>See Also</title>
+
+    <simplelist type="inline">
+      <member><link linkend="ANN">ANN</link></member>
+
+      <member><link linkend="ANN_GEN">ANN_GEN</link></member>
+    </simplelist>
+  </refsection>
+</refentry>

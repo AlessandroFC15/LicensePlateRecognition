@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_Std_batch_nb">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname> ann_FF_Std_batch_nb</refname>
+    <refpurpose>standard batch backpropagation (without bias).</refpurpose>
+  </refnamediv>  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>W = ann_BP_Std_batch_nb(x,t,N,W,lp,T[,af,ex])
+     </para>
+  </refsection>  
+  
+<refsection>
+    <title>PARAMETERS</title>
+    <para>   This function have same parameters as ann_FF_Std_online_nb except for:
+  
+ ex   string representing a valid Scilab program sequence, executed after
+      each epoch trough execstr.
+      
+
+     </para>
+  </refsection>  
+<refsection>
+    <title>Description</title>
+    <para>   Returns the updated weight hypermatrix of a feedforward ANN, after
+  training with a given set of patterns, T times. The algorithm used is
+  standard batch backpropagation.  This function is to be used on networks
+  without biases.
+     </para>
+  </refsection>  
+ 
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ann_FF_Std_online_nb">ann_FF_Std_online_nb</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>     

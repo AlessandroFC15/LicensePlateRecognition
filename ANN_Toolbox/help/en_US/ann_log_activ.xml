@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_log_activ">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_log_activ</refname>
+    <refpurpose>logistic activation function</refpurpose>
+  </refnamediv>  
+  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>y = ann_log_activ(x)
+     </para>
+  </refsection>  
+  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> y    Matrix containing the activation, one pattern per column. For each
+      pattern:
+      
+                          1
+             y(i) = --------------
+                    1 + exp[-x(i)]
+ x    Matrix containing the total neuronal input, one pattern per column.
+      For each pattern: each x(i) for the corresponding i-th neuron on the
+      current layer.
+      
+
+     </para>
+  </refsection>  
+<refsection>
+    <title>Description</title>
+    <para>   This function is the default neuronal activation function. Any other,
+  user defined, function should have the same input and output format for
+  variables. 
+     </para>
+  </refsection>  
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>     

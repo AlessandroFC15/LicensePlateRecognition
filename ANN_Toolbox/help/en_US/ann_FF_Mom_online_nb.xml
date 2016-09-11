@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_Mom_online_nb">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_Mom_online_nb</refname>
+    <refpurpose>online backpropagation with momentum.</refpurpose>
+  </refnamediv>  
+  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>   [W,Delta_W_old]=
+  ann_FF_Mom_online_nb(x,t,N,W,lp,T[,Delta_W_old,af,ex,err_deriv_y])
+     </para>
+  </refsection>  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> x    Matrix of input patterns, one pattern per column
+      
+ t    Matrix of targets, one pattern per column. Each column have a
+      correspondent column in x.
+      
+ N    Row vector describing the number of neurons per layer. N(1) is the
+      size of input pattern vector, N(size(N,'c')) is the size of output
+      pattern vector (and also target).
+      
+ W    The weight hypermatrix (initialized first with ann_FF_init_nb).
+      
+ lp   Learning parameters [lp(1),lp(2),lp(3),lp(4)].
+      
+     lp(1)
+               is the well known learning parameter of standard backpropagation
+          algorithm, W is changed according to the formula:
+          
+         
+             W(t+1) = W(t) - lp(1) * grad E + momentum term
+         
+         where t is the (discrete) time and E is the error. Typical
+          values: 0.1 ... 1. Some networks train faster with even greater
+          learning parameter.
+          
+     lp(2)
+               defines the threshold of error which is backpropagated: a error
+          smaller that lp(2) (at one neuronal output) is rounded towards
+          zero and thus not propagated. Typical values: 0 ... 0.1.  E.g.
+          assume that output of neuron n have the actual output 0.91 and
+          the target (for that particular neuron, given the corresponding
+          input) is 1. If lp(2) = 0.1 then the error term associated to n
+          is rounded to 0 and thus not propagated.
+          
+     lp(3)
+               is the momentum parameter. The momentum term added to W is:
+          
+         
+             momentum term = lp(3) * Delta_W_old
+         
+         Typical values: 0 ... 0.9999... (smaller than 1).
+          
+     lp(4)
+               is the flat spot elimination constant added to the derivative of
+          activation function, when computing the error gradient, to help
+          the network pass faster over areas where the error gradient is
+          small (flat error surface area). I.e. the derivative of
+          activation is replaced:
+          
+         
+             f'(total neuronal input) --> f'(total neuronal input) + lp(4)
+         
+         when computing the gradient. Typical values: 0 ... 0.25.
+          
+ T    the number of epochs (training cycles trough all pattern set).
+      
+ Delta_W_old
+       The previous weight adjusting quantity.  This parameter is optional,
+      default value is: Delta_W_old = hypermat(size(W)'). NOTE: When
+      calling ann_FF_Mom_online_nb for the first time you should either:
+      
+     -   not give any value to Delta_W_old
+         
+     - initialize it to zero using "Delta_W_old=hypermat(size(W)')"
+              On subsequent calls to ann_FF_Mom_online_nb you should give the value
+         of Delta_W_old returned by the previous call.
+         
+ af   Activation function and its derivative. Row vector of strings:
+      
+     af(1)
+               name of activation function.
+          
+     af(2)
+               name of derivative.
+          
+         Warning: given the activation function y = f(x), the derivative
+          have to be expressed in terms of y, not x.  This parameter is
+          optional, default value is "['ann_log_activ',
+          'ann_d_log_activ']", i.e. logistic activation function and its
+          derivative.
+          
+ err_deriv_y
+       the name of error function derivative with respect to network outputs. 
+      This parameter is optional, default value is "ann_d_sum_of_sqr", i.e.
+      the derivative of sum-of-squares.
+      
+ ex   two-dimensional row vector of strings representing valid Scilab
+      sequences. ex(1) is executed after the weight hypermatrix have been
+      updated, after each pattern (not whole set), using execstr. ex(2),
+      same as ex(1), but is executed after each epoch.  This parameter is
+      optional, default value is [" "," "] (do nothing).
+ 
+
+     </para>
+  </refsection>  
+<refsection>
+    <title>Description</title>
+    <para>   Returns the updated weight hypermatrix of a feedforward ANN, after
+  training with a given set of patterns. The algorithm used is online
+  backpropagation with momentum. Delta_W_old holds the previous weight
+  update (useful for subsequent calls).  This function is to be used on
+  networks without biases.
+     </para>
+  </refsection>  
+  
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ANN_GEN">ANN_GEN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+      <member>
+        <link linkend="ann_FF_init_nb">ann_FF_init_nb</link>
+      </member>
+      <member>
+        <link linkend="ann_FF_run_nb">ann_FF_run_nb</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>      

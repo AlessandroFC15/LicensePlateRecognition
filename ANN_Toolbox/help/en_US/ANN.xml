@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:id="ANN" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008)
+    $</pubdate>
+  </info>
+
+  <refnamediv>
+    <refname>ANN</refname>
+
+    <refpurpose>Toolbox for neural networks</refpurpose>
+  </refnamediv>
+
+  <refsection>
+    <title>Description</title>
+
+    <para>This ANN toolbox is designed to provide ANN engines for exploration
+    and easy prototyping.This man page gives an overview.</para>
+
+    <para>The above main objective have influenced the overall design, i.e.
+    (1) this toolbox will not be translated to C or Fortran for speed (see
+    also the sci2for function), (2) except for the main algorithms (described
+    in various books, e.g. see mine "Matrix ANN", it is heavily commented and
+    explained such that it will be easy to adapt to particular needs if
+    necessary, (3) at some points clarity was preferred over speed, when this
+    do not lead to large speed loss.</para>
+  </refsection>
+
+  <refsection>
+    <title>COMPONENTS</title>
+
+    <para>General support functions See ANN_GEN for support functions for ANN.
+    Feedforward networks See ann_FF for detailed description.</para>
+  </refsection>
+
+  <refsection>
+    <title>See Also</title>
+
+    <simplelist type="inline">
+      <member><link linkend="ANN_GEN">ANN_GEN</link></member>
+
+      <member><link linkend="ann_FF">ann_FF</link></member>
+    </simplelist>
+  </refsection>
+</refentry>

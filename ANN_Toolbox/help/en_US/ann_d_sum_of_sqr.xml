@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:id="ann_d_sum_of_sqr" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns4="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008)
+    $</pubdate>
+  </info>
+
+  <refnamediv>
+    <refname>ann_d_sum_of_sqr</refname>
+
+    <refpurpose>derivative of sum-of-squares error</refpurpose>
+  </refnamediv>
+
+  <refsection>
+    <title>CALLING SEQUENCE</title>
+
+    <para>err_d = ann_d_sum_of_sqr(y,t)</para>
+  </refsection>
+
+  <refsection>
+    <title>PARAMETERS</title>
+
+    <para>err_d Matrix containing the sum-of-squares error derivative, one per
+    column, each column have a correspondent in y and t.</para>
+
+    <para>y Matrix containing the actual network outputs, one per column, each
+    column have a correspondent in t and err_d.</para>
+
+    <para>t Matrix containing the targets, one per column, each column have a
+    correspondent in y and err_d.</para>
+  </refsection>
+
+  <refsection>
+    <title>Description</title>
+
+    <para>This function calculates the derivative of sum-of-squares error
+    given y and t. </para>
+
+    <para>Any other, user defined, error function should have the same input
+    and output format for variables.</para>
+
+    <para>Note: this function is extremly simple, it just calculates
+    y-t.</para>
+
+    <para>The only reason to provide it is to allow the option to change the
+    default error function if so is desired.</para>
+  </refsection>
+
+  <refsection>
+    <title>See Also</title>
+
+    <simplelist type="inline">
+      <member><link linkend="ANN">ANN</link></member>
+
+      <member><link linkend="ann_FF">ann_FF</link></member>
+    </simplelist>
+  </refsection>
+</refentry>

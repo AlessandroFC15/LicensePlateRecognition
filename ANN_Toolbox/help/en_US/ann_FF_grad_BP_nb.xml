@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_grad_BP_nb">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_grad_BP_nb</refname>
+    <refpurpose>error gradient trough backpropagation (without bias)</refpurpose>
+  </refnamediv>  
+  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para> W = ann_FF_grad_BP_nb(x,t,N,W[,c,af,err_deriv_y])
+     </para>
+  </refsection>  
+<refsection>
+
+    <title>PARAMETERS</title>
+    <para> x    Matrix of input patterns, one pattern per column.
+      
+ t    Matrix of targets, one pattern per column. Each column have a
+      correspondent column in x.
+      
+ N    Row vector describing the number of neurons per layer. N(1) is the
+      size of input pattern vector, N(size(N,'c')) is the size of output
+      pattern vector (and also target).
+      
+ W    The weight hypermatrix (initialized first trough ann_BP_init).
+      
+ c    defines the threshold of error which is backpropagated: a error
+      smaller that c (at one neuronal output) is rounded towards zero and
+      thus not propagated. It have to be set to zero for exact calculation
+      of gradient.  This parameter is optional, default value 0.
+      
+ af   Activation function and its derivative. Row vector of strings:
+      
+     af(1)
+               name of activation function.
+          
+     af(2)
+               name of derivative.
+          
+         Warning: given the activation function y=f(x), the derivative
+          have to be expressed in terms of y, not x.  This parameter is
+          optional, default value is "['ann_log_activ',
+          'ann_d_log_activ']", i.e. logistic activation function and its
+          derivative.
+          
+ err_deriv_y
+       the name of error function derivative with respect to network outputs. 
+      This parameter is optional, default value is "ann_d_sum_of_sqr", i.e.
+      the derivative of sum-of-squares.
+      
+
+     </para>
+  </refsection>  
+<refsection>
+    <title>Description</title>
+    <para>   Returns the error gradient hypermatrix (it have the same layout as W) of
+  a feedforward ANN, using the whole given training set. The algorithm used
+  is standard backpropagation.  This function is to be used on networks
+  without biases.
+     </para>
+  </refsection>  
+<refsection>
+ <title>EXAMPLES</title>
+    <para>   This function is used as a low level engine in other algorithms (thus the
+  reason for existence of c parameter), e.g. see implementation of
+  ann_FF_ConjugGrad function.
+
+     </para>
+  </refsection>  
+
+  
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+      <member>
+        <link linkend="ann_FF_init_nb">ann_FF_init_nb</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>      
+  

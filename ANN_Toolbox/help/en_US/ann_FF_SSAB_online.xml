@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:db="http://docbook.org/ns/docbook" version="5.0-subset Scilab" xml:lang="en" xml:id="ann_FF_SSAB_online">
+  <info>
+    <pubdate>$LastChangedDate: 2008-03-26 09:50:39 +0100 (mer., 26 mars 2008) $</pubdate>
+  </info>
+  <refnamediv>
+    <refname>ann_FF_SSAB_online</refname>
+    <refpurpose>online SuperSAB training algorithm.</refpurpose>
+  </refnamediv>  
+<refsection>
+    <title>CALLING SEQUENCE</title>
+    <para>   [W,Delta_W_old,Delta_W_oldold,mu]=
+  ann_FF_SSAB_online(x,t,N,W,lp,Delta_W_old,Delta_W_oldold,T[,mu,af,ex,err_deriv_y]) 
+     </para>
+  </refsection>  
+  
+<refsection>
+    <title>PARAMETERS</title>
+    <para> x    Matrix of input patterns, one pattern per column
+      
+ t    Matrix of targets, one pattern per column. Each column have a
+      correspondent column in x.
+      
+ N    Row vector describing the number of neurons per layer. N(1) is the
+      size of input pattern vector, N(size(N,'c')) is the size of output
+      pattern vector (and also target).
+      
+ W    The weight hypermatrix (initialized first trough ann_FF_init).
+      
+ lp   Learning parameters [lp(1),lp(2),lp(3),lp(4),lp(5)].
+      
+     lp(1)
+               is the well known learning parameter of vanilla backpropagation
+          algorithm, it is used only to initialize mu if not given (mu
+          being optional)  Typical values: 0.1 ... 1. Note that initial
+          values may be strongly amplified in some circumstances.
+          
+     lp(2)
+               defines the threshold of error which is backpropagated: a error
+          smaller that lp(2) (at one neuronal output) is rounded towards
+          zero and thus not propagated. Typical values: 0 ... 0.1.  E.g.
+          assume that output of neuron n have the actual output 0.91 and
+          the target (for that particular neuron, given the corresponding
+          input) is 1. If lp(2) = 0.1 then the error term associated to n
+          is rounded to 0 and thus not propagated.
+          
+     lp(3)
+               is the momentum parameter, used to "cancel" a previously wrong weight
+          adaptation. Typical values: 0 ... 0.9999... (smaller than 1).
+          
+     lp(4)
+               is the adaptive increasing factor. Typical values: 1.1 ... 1.3.
+          
+     lp(5)
+               is the adaptive decreasing factor. Typical values: lp(5) = 1/lp(4)
+          (lp(5) &lt; 1).
+          
+ Delta_W_old
+       The previous weight adjusting quantity.  On first call this parameter
+      should be initialized to zero using e.g.
+      
+     
+             Delta_W_old = hypermat(size(W)')
+     
+     On subsequent calls to ann_FF_SSAB you should give the value of
+      Delta_W_old returned by the previous call.
+      
+ Delta_W_oldold
+       The weight adjusting quantity used two steps back. Same remarks as for
+      Delta_W_old (above) apply.
+      
+ T    The number of epochs (training cycles trough all pattern set).
+      
+ mu   This is the hypermatrix of learning constants who replaces lp(1) and
+      is adapted at each step.  This parameter is optional, default value
+      is "mu = lp(1)*hypermat(size(W)',ones(prod(size(W)'),1))", i.e. it is
+      initialized uniformly to lp(1).
+      
+ af   Activation function and its derivative. Row vector of strings:
+      
+     af(1)
+               name of activation function (string).
+          
+     af(2)
+               name of derivative.  Warning: given the activation function y=f(x),
+          the derivative have to be expressed in terms of y, not x.  This
+          parameter is optional, default value is "['ann_log_activ',
+          'ann_d_log_activ']", i.e. logistic activation function and its
+          derivative.
+          
+ err_deriv_y
+       the name of error function derivative with respect to network outputs. 
+      This parameter is optional, default value is "ann_d_sum_of_sqr", i.e.
+      the derivative of sum-of-squares.
+      
+ ex   two-dimensional row vector of strings representing valid Scilab
+      sequences. ex(1) is executed after the weight matrix have been
+      updated, after each pattern (not whole set), using execstr. ex(2) -
+      same as ex(1) - but is executed once after each epoch.  This
+      parameter is optional, default value is [" "," "] (do nothing).
+      
+
+     </para>
+  </refsection>  
+<refsection>
+    <title>Description</title>
+    <para>   Returns the updated weight hypermatrix of a feedforward ANN, after
+  training with a given set of patterns. The algorithm used is online
+  backpropagation with SuperSAB.
+  
+     </para>
+  </refsection>  
+
+  <refsection>
+    <title>See Also</title>
+    <simplelist type="inline">
+      <member>
+        <link linkend="ANN">ANN</link>
+      </member>
+      <member>
+        <link linkend="ANN_GEN">ANN_GEN</link>
+      </member>
+      <member>
+        <link linkend="ann_FF">ann_FF</link>
+      </member>
+      <member>
+        <link linkend="ann_FF_init">ann_FF_init</link>
+      </member>
+      <member>
+        <link linkend="ann_FF_run">ann_FF_run</link>
+      </member>
+    </simplelist>
+  </refsection>
+</refentry>      
+  
