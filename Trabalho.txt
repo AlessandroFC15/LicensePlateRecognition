@@ -1,5 +1,42 @@
 https://burubaxair.wordpress.com/2014/03/12/artificial-neural-networks-in-scilab/
 
++ RESUMO
+	. Este trabalho tem como objetivo a implementação de uma rede neural artificial
+	sem realimentação (‘feedforward’) que realize o reconhecimento de caracteres
+	alfabéticos obtidos através de fotos digitais de placas de veículos automotores. Será
+	utilizado o método de Retropropagação do erro (‘Backpropagation’) para o treinamento
+	da rede visando a convergência para um erro médio quadrático mínimo. Ao longo do
+	trabalho serão testadas várias configurações de parâmetros de operação da rede tendo
+	como objetivo a melhor eficiência nos resultados.
+	
++ SOLUÇÃO PROPOSTA
+
+	+ PREPARAÇÃO DOS DADOS
+		
+
+	+ DEFINIÇÃO DA REDE
+
+	. A definição da arquiterura da rede consistiu em determinar 4 características básicas:
+		1. Número de entradas;
+		2. Número de camadas de neurônios;
+		3. Número de neurônios por camada;
+		4. Função de ativação dos neurônios.
+		
+		A fim de reconhecer os caracteres presentes na placa do carro, construímos uma rede neural artificial com a camada de entrada, de saída e a camada escondida. O número de entradas escolhido foi 25, como demonstrado acima, sendo este número devido à quantidade de pixels da matriz correspondente a um caracter compactado (5 x 5). Todos os números presentes nas representações dos caracteres assumem valor 0 ou 1.
+		
+		A configuração de saída escolhida foi a maximamente esparsa,  na qual cada neurônio corresponde a um padrão a ser reconhecido. Isto significa que quando este neurônio está ativo e os demais não estão, o padrão reconhecido foi o correspondente ao neurônio ativo. Logo, o número de neurônios na camada de saída foi definido como 7, um neurônio para cada caractere presente na placa do carro. Como a placa possui 3 letras e 4 números, temos então 7 neurônios na camada de saída. 
+		
+		Com relação ao número de neurônios na camada escondida, a obtenção da quantidade ideal foi realizada em duas etapas. Na primeira etapa foram realizados 15 treinamentos com os mesmos
+		conjuntos de treinamento – teste, onde o nº de neurônios foi sendo alterado de 10 até 50.
+		Os resultados deste teste estão na figura 4 e 5. Como podemos observar na tabela da
+		figura 4, conforme aumentamos a quantidade de neurônios a rede consegue aprender
+		mais padrões. Curioso observar também que a rede aprende 100% alguns padrões e
+		simplesmente ignora outros completamente (0% de eficiência). Este problema foi
+		melhorado posteriormente treinando a rede com outros parâmetros a e b e prolongandose
+		o treinamento por maior número de épocas.
+		
+		# Gráfico Fera | Nº de Neurônios na camada 
+	
 --------
 
 >> Desenvolvimento
